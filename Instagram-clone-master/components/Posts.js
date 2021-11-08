@@ -1,39 +1,18 @@
+import { collection, onSnapshot, orderBy, query } from "@firebase/firestore";
 import Post from "./Post"
+import {useState, useEffect} from "react"
+import {db, storage} from "../firebase";
 
-const posts = [
-    {
-        id: "123",
-        username: "sunnySanga",
-        userImage: "https://cdn.fakercloud.com/avatars/woodsman001_128.jpg",
-        img: "https://cdn.fakercloud.com/avatars/woodsman001_128.jpg",
-        caption: "SUBSCRIBE THE CHANNEL"
-    }, {
-        id: "123",
-        username: "sunnySanga",
-        userImage: "https://cdn.fakercloud.com/avatars/woodsman001_128.jpg",
-        img: "https://cdn.fakercloud.com/avatars/woodsman001_128.jpg",
-        caption: "SUBSCRIBE THE CHANNEL"
-    }, {
-        id: "123",
-        username: "sunnySanga",
-        userImage: "https://cdn.fakercloud.com/avatars/woodsman001_128.jpg",
-        img: "https://cdn.fakercloud.com/avatars/woodsman001_128.jpg",
-        caption: "SUBSCRIBE THE CHANNEL"
-    }, {
-        id: "123",
-        username: "sunnySanga",
-        userImage: "https://cdn.fakercloud.com/avatars/woodsman001_128.jpg",
-        img: "https://cdn.fakercloud.com/avatars/woodsman001_128.jpg",
-        caption: "SUBSCRIBE THE CHANNEL"
-    }, {
-        id: "123",
-        username: "sunnySanga",
-        userImage: "https://cdn.fakercloud.com/avatars/woodsman001_128.jpg",
-        img: "https://cdn.fakercloud.com/avatars/woodsman001_128.jpg",
-        caption: "SUBSCRIBE THE CHANNEL"
-    },
-]
 function Posts() {
+
+    const [posts, setPosts] = useState([]);
+    useEffect(() => {
+        return onSnapshot(query(collection(db, 'posts'), orderBy('timestamp', 'desc')), snapshot => {
+            setPosts(snapshot.docs);
+        });
+    }, [db])
+
+    console.log(posts)
     return (
         <div>
             {posts.map((post) => (

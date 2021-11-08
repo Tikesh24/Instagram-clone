@@ -5,7 +5,7 @@ import Modal from '../components/Modal'
 
 export default function Home() {
   return (
-    <div className="flex flex-col justify-center py-2">
+    <div className="flex flex-col justify-center">
       <Head>
         <title>Instagram</title>
         <link rel="icon" href="/assests/instagram.ico" />
