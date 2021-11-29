@@ -18,10 +18,11 @@ function Posts() {
             {posts.map((post) => (
                 <Post
                     key={post.id}
-                    username={post.username}
-                    userImage={post.userImage}
-                    img={post.img}
-                    caption={post.caption} />
+                    id={post.id}
+                    username={post.data().username}
+                    userImage={post.data().profileImg}
+                    img={post.data().image}
+                    caption={post.data().caption} />
             ))}
         </div>
     )
