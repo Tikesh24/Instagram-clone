@@ -8,10 +8,10 @@ import {
     EmojiHappyIcon,
     HeartIcon,
     PaperAirplaneIcon,
-    
+
 } from '@heroicons/react/outline'
 
-import {HeartIcon as HeartIconFilled} from '@heroicons/react/solid'
+import { HeartIcon as HeartIconFilled } from '@heroicons/react/solid'
 import { addDoc, collection, deleteDoc, doc, onSnapshot, orderBy, query, serverTimestamp, setDoc } from '@firebase/firestore';
 import { db, storage } from "../firebase";
 
@@ -69,7 +69,8 @@ const Post = ({ id, username, userImage, img, caption }) => {
             timestamp: serverTimestamp(),
         });
     }
-    console.log(comments);
+
+
     return (
         <div className="bg-white my-7 border rounded-sm">
             {/* Header */}
@@ -103,7 +104,7 @@ const Post = ({ id, username, userImage, img, caption }) => {
             {/* caption */}
             <p className="p-5 truncate">
                 {
-                    likes.length > 0 && ( <p className="font-bold mb-1">{likes.length} likes</p>)
+                    likes.length > 0 && (<p className="font-bold mb-1">{likes.length} likes</p>)
                 }
                 <span className="font-bold mr-1 ">{username}</span>
                 {caption}
